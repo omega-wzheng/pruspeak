@@ -5,25 +5,25 @@ import os
 PATH = "/dev/pruspeak"
 
 if os.path.exists(PATH):
-	os.remove(PATH)
+    os.remove(PATH)
 
 os.mkfifo(PATH)
 f_read = open(PATH, "r")
 
 while True:
-	#blocking wait for data from client
-	bs_code = f_read.read()
+    # blocking wait for data from client
+    bs_code = f_read.read()
 
-	if not bs_code:
-		continue
+    if not bs_code:
+        continue
 
         try:
-                ret = pru_speak.execute_instruction(bs_code)
-                print ret 
-		#move this to 'cat' implementation later on. may need another thread for this.
+            ret = pru_speak.execute_instruction(bs_code)
+            print(ret)
+        # move this to 'cat' implementation later on. may need another thread for this.
 
         except Exception as e:
-                print e
+            print(e)
 
 
 f_read.close()

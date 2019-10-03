@@ -61,26 +61,26 @@ def t_HEX_INT(t):
     return t
 
 def t_INT(t):
-	'\d+'
-	t.value = int(t.value)    
-	return t
+    '\d+'
+    t.value = int(t.value)
+    return t
 
 def t_VAR(t):
-	r'[a-zA-Z_][a-zA-Z_0-9]*'
-	if t.value in reserved:
-		#eg t.value == 'SET'
-		t.type = t.value 
-		#then change the token to 'SET'
-	return t
+    r'[a-zA-Z_][a-zA-Z_0-9]*'
+    if t.value in reserved:
+        #eg t.value == 'SET'
+        t.type = t.value
+        #then change the token to 'SET'
+    return t
 
 def t_error(t):
-	print "Illegal character '%s'" % t.value[0]
+    print ("Illegal character '%s'" % t.value[0])
 
 lexer = lex.lex()
 data =  '''SET DIO[myvar], 1'''
 lexer.input(data)
 
 if __name__ == '__main__':
-	for tok in lexer:
-		print tok
+    for tok in lexer:
+        print (tok)
 
