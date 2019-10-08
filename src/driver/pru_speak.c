@@ -23,7 +23,8 @@
 #include <linux/pm_runtime.h>
 #include <linux/pinctrl/consumer.h>
 #include <linux/io.h>
-#include <plat/mailbox.h>
+#include <config/mailbox.h>
+#include <linux/interrupt.h>
 #include <linux/virtio_ids.h>
 #include <linux/elf.h>
 #include <linux/byteorder/generic.h>
@@ -106,7 +107,7 @@ void rproc_exit_debugfs(void);
 void rproc_free_vring(struct rproc_vring *rvring);
 int rproc_alloc_vring(struct rproc_vdev *rvdev, int i);
 
-void *rproc_da_to_va(struct rproc *rproc, u64 da, int len);
+//void *rproc_da_to_va(struct rproc *rproc, u64 da, int len);
 int rproc_trigger_recovery(struct rproc *rproc);
 
 static inline
@@ -205,13 +206,13 @@ struct pruproc_core;
 #define PRU_PWM_MAX	32
 
 /* returns the initialized bin_attr struct for sysfs */
-#define BIN_ATTR(_name,_mode,_size,_read,_write,_mmap) { \
+/*#define BIN_ATTR(_name,_mode,_size,_read,_write,_mmap) { \
        .attr = { .name  =  __stringify(_name),  .mode = _mode  },   \
        .size = _size,                                         \
        .read   = _read,                                      \
        .write  = _write,                                      \
        .mmap = _mmap,                                   \
-}
+}*/
 
 
 struct pru_vring_info {
@@ -1272,8 +1273,6 @@ static struct rproc_ops pruproc_ops = {
 	.stop		= pruproc_stop,
 	.kick		= pruproc_kick,
 
-	.alloc_vring	= pruproc_alloc_vring,
-	.free_vring	= pruproc_free_vring,
 };
 
 static ssize_t pruproc_store_load(struct device *dev,
