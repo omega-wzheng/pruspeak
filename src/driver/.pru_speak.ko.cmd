@@ -1,1 +1,0 @@
-cmd_/var/lib/cloud9/pruspeak/src/driver/pru_speak.ko := ld -EL -r  -T ./scripts/module-common.lds --build-id  -T ./arch/arm/kernel/module.lds -o /var/lib/cloud9/pruspeak/src/driver/pru_speak.ko /var/lib/cloud9/pruspeak/src/driver/pru_speak.o /var/lib/cloud9/pruspeak/src/driver/pru_speak.mod.o ;  true
