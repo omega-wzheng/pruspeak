@@ -21,30 +21,30 @@ conn, addr = s.accept()
 print ('Connection address:', addr)
 
 while True:
+    try:
+        # blocking wait for data from client
+        bs_code = conn.recv(BUFFER_SIZE)
+        print("recieved : \n", bs_code, "\n")
+
+        if (not bs_code) or (bs_code == 'EXIT'):
+            break  # send empty data to shutdown server
+
         try:
-                #blocking wait for data from client
-                bs_code = conn.recv(BUFFER_SIZE)
-                print ("recieved : \n", bs_code, "\n")
-
-                if (not bs_code) or (bs_code == 'EXIT'):
-			break #send empty data to shutdown server
-
-		try:
-                	ret = pru_speak.execute_instruction(bs_code)
-			print ("Return value : ", ret)
-			if ret == []:
-				#no return value
-				conn.send('\n')
-			else:
-				#the sends the list of ret values as a string sperated by " "
-	        	        conn.send(" ".join(map(str, ret)) + "\n")
-
-	        except Exception as e:
-                	print (e)
-
+            ret = pru_speak.execute_instruction(bs_code)
+            print("Return value : ", ret)
+            if ret == []:
+                # no return value
+                conn.send('\n')
+            else:
+                # the sends the list of ret values as a string sperated by " "
+                conn.send(" ".join(map(str, ret)) + "\n")
 
         except Exception as e:
-                print ("error : ", e)
-                break
+            print(e)
+
+
+    except Exception as e:
+        print("error : ", e)
+        break
 
 conn.close()
