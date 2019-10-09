@@ -196,4 +196,4 @@ SET next_op, main
 from pru_speak import pru_speak
 
 ret = pru_speak.execute_instruction(SETUP)
-print ret
+print (ret)

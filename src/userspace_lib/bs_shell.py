@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #This is a shell to use pruspeak
 
 from pru_speak import pru_speak

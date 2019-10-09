@@ -34,7 +34,7 @@ RUN
 '''
 
 ret = pru_speak.execute_instruction(EX3)
-print ret
+print (ret)
 
 while True:
 	pass

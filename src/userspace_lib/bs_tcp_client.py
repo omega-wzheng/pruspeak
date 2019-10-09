@@ -24,15 +24,15 @@ s.connect((TCP_IP, TCP_PORT))
 while 1:
 	try:
 		msg = get_data()
-		print "sending message\n", msg, "\n"
+		print ("sending message\n", msg, "\n")
 		s.send(msg)
 		data = s.recv(BUFFER_SIZE)
 		if data != '\n':
-			print "return value:", data
+			print( "return value:", data)
 
 	except Exception as e:
-		print e
-		print "Ending Connection"
+		print (e)
+		print ("Ending Connection")
 		s.close()
 		break		
 		
