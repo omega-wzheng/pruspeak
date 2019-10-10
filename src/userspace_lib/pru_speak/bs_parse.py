@@ -4,8 +4,8 @@
 ## If there is an error (syntax or semantic); None is returned; in the future throw custom Exception
 
 import ply.yacc as yacc
-from .bs_lex import *
-from .node import *
+from bs_lex import *
+from node import *
 
 # **********INCASE opcodes get over, we can compress a few later***************
 

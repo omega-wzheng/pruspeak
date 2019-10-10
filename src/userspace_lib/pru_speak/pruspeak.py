@@ -5,7 +5,7 @@
 #	The API is mainly used to execute an BS instruction.
 
 import bs_parse
-from .bs_parse import parser
+from bs_parse import parser
 import kernel_lib
 
 class PruSpeak:
